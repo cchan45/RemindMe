@@ -1,12 +1,12 @@
-let database = require("../database");
+let database = require('../database');
 
 let remindersController = {
     list: (req, res) => {
-        res.render("reminder/index", { reminders: database.cindy.reminders });
+        res.render('reminder/index', { reminders: database.cindy.reminders });
     },
 
     new: (req, res) => {
-        res.render("reminder/create");
+        res.render('reminder/create');
     },
 
     listOne: (req, res) => {
@@ -15,9 +15,9 @@ let remindersController = {
             return reminder.id == reminderToFind;
         });
         if (searchResult != undefined) {
-            res.render("reminder/single-reminder", { reminderItem: searchResult });
+            res.render('reminder/single-reminder', { reminderItem: searchResult });
         } else {
-            res.render("reminder/index", { reminders: database.cindy.reminders });
+            res.render('reminder/index', { reminders: database.cindy.reminders });
         }
     },
 
@@ -29,7 +29,7 @@ let remindersController = {
             completed: false,
         };
         database.cindy.reminders.push(reminder);
-        res.redirect("/reminders");
+        res.redirect('/reminders');
     },
 
     edit: (req, res) => {
@@ -37,7 +37,7 @@ let remindersController = {
         let searchResult = database.cindy.reminders.find(function (reminder) {
             return reminder.id == reminderToFind;
         });
-        res.render("reminder/edit", { reminderItem: searchResult });
+        res.render('reminder/edit', { reminderItem: searchResult });
     },
 
     update: (req, res) => {
