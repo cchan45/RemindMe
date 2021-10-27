@@ -2,7 +2,9 @@ let database = require('../database');
 
 let remindersController = {
     list: (req, res) => {
-        res.render('reminder/index', { reminders: database.cindy.reminders });
+        res.render('reminder/index', {
+            reminders: database.cindy.reminders
+        });
     },
 
     new: (req, res) => {
@@ -15,9 +17,13 @@ let remindersController = {
             return reminder.id == reminderToFind;
         });
         if (searchResult != undefined) {
-            res.render('reminder/single-reminder', { reminderItem: searchResult });
+            res.render('reminder/single-reminder', {
+                reminderItem: searchResult
+            });
         } else {
-            res.render('reminder/index', { reminders: database.cindy.reminders });
+            res.render('reminder/index', {
+                reminders: database.cindy.reminders
+            });
         }
     },
 
@@ -37,15 +43,17 @@ let remindersController = {
         let searchResult = database.cindy.reminders.find(function (reminder) {
             return reminder.id == reminderToFind;
         });
-        res.render('reminder/edit', { reminderItem: searchResult });
+        res.render('reminder/edit', {
+            reminderItem: searchResult
+        });
     },
 
     update: (req, res) => {
-        // implement this code
+        // Implement this code (Tadhg and Anthony)
     },
 
     delete: (req, res) => {
-        // Implement this code
+        // Implement this code (Chris)
     },
 };
 
