@@ -7,3 +7,4 @@ Each Wednesday we will make a new section and check on the project kanban what w
 ### Anthony
 
 ### Chris
+I worked on the following tasks:
