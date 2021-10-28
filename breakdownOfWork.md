@@ -7,3 +7,4 @@
 
 ### Chris
 I worked on the following tasks:
+oct 27: watched all the lecture videos
