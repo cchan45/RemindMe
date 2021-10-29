@@ -4,6 +4,8 @@
 ### Tadhg
 
 ### Anthony
+Oct 28: watched video 1
+Oct 29: worked on edit with Tadhg, watched video 2
 
 ### Chris
 I worked on the following tasks:
