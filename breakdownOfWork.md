@@ -2,6 +2,7 @@
 
 ## Oct 27 -> Nov 3
 ### Tadhg
+Oct 29: add reminder editing w/ anthony
 
 ### Anthony
 Oct 28: watched video 1
