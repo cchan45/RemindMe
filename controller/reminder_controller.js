@@ -49,7 +49,17 @@ let remindersController = {
     },
 
     update: (req, res) => {
-        // Implement this code (Tadhg and Anthony)
+        const searchResult = database.cindy.reminders.find(reminder => {
+            return reminder.id == req.params.id;
+        });
+
+        searchResult.title = req.body.title;
+        searchResult.description = req.body.description;
+        searchResult.completed = req.body.completed == 'true' ? true : false;
+
+        res.render('reminder/single-reminder', {
+            reminderItem: searchResult
+        });
     },
 
     delete: (req, res) => {
