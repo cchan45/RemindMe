@@ -1,6 +1,3 @@
-const express = require("express");
-const passport = require("../middleware/passport");
-const router = express.Router();
 let database = require('../database');
 
 let authController = {
@@ -13,13 +10,7 @@ let authController = {
     },
 
     loginSubmit: (req, res) => {
-        router.post(
-            "/login",
-            passport.authenticate("local", {
-              successRedirect: "/dashboard",
-              failureRedirect: "/login",
-            })
-          );
+        // implement
     },
 
     registerSubmit: (req, res) => {
