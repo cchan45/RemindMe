@@ -10,13 +10,13 @@ router.post(
   "/login",
   passport.authenticate("local", {
     successRedirect: "/reminders",
-    failureRedirect: "/auth/login",
+    failureRedirect: "/login",
   }),
 );
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/auth/login");
+  res.redirect("/login");
 });
 
 module.exports = router;
