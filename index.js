@@ -8,26 +8,27 @@ const authRoute = require("./routes/authRoute");
 
 const app = express();
 
+app.set('view engine', 'ejs');
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.urlencoded({ extended: false }));
 
+app.use(
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      secure: false,
+      maxAge: 24 * 60 * 60 * 1000,
+    },
+  })
+);
+
 app.use(ejsLayouts);
 
-app.set('view engine', 'ejs');
-
-app.use(
-    session({
-      secret: "secret",
-      resave: false,
-      saveUninitialized: false,
-      cookie: {
-        httpOnly: true,
-        secure: false,
-        maxAge: 24 * 60 * 60 * 1000,
-      },
-    })
-  );
 
 app.use(passport.initialize());
 
