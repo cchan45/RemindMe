@@ -1,4 +1,4 @@
-let database = require('../database');
+let { Database }= require('../database');
 
 let authController = {
     login: (req, res) => {
@@ -14,8 +14,16 @@ let authController = {
     },
 
     registerSubmit: (req, res) => {
-        // implement
-    },
+        Database.push({
+            "id": Database.length + 1,
+            "name": req.body["name"],
+            "email": req.body["email"],
+            "password": req.body["password"],
+            "reminders": []
+        })
+        console.log(Database)
+        res.redirect("/reminders")
+    }
 };
 
 module.exports = authController;

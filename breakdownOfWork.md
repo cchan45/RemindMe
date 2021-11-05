@@ -15,4 +15,5 @@ oct 28: added functionality to the delete button
 Oct 29 - Nov 2: nothing
 Nov 3: did some research on passportJS
 Nov 4: worked on login function
+Nov 5: working on register function
 

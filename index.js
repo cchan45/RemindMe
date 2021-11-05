@@ -3,6 +3,7 @@ const path = require('path');
 const ejsLayouts = require('express-ejs-layouts');
 const session = require("express-session");
 const reminderController = require('./controller/reminder_controller');
+const authController = require('./controller/auth_controller')
 const passport = require("./middleware/passport");
 const authRoute = require("./routes/authRoute");
 const { forwardAuthenticated, ensureAuthenticated } = require("./middleware/checkAuth");
@@ -35,11 +36,13 @@ app.use(passport.initialize());
 
 app.use(passport.session());
 
-// Routes start here
-
+// Ensure user is logged in
 app.get('/reminders', ensureAuthenticated, reminderController.list);
-
 app.get('/reminder/new', ensureAuthenticated, reminderController.new);
+
+//Registration Page
+app.get('/register', authController.register)
+app.post('/register', authController.registerSubmit)
 
 /*routes below only work if the user is logged in 
 (i.e. doesn't need "ensureAuthenticated" function inside these routes)
