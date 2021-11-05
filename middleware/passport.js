@@ -17,7 +17,7 @@ const localLogin = new LocalStrategy(
   }
 );
 
-//creates a session if user is in database
+//creates a session if user is in database (only if user is logged in)
 passport.serializeUser(function (user, done) {
   done(null, user.id); // stores the userID inside the session
 });
