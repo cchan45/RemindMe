@@ -14,4 +14,5 @@ oct 27: watched all the lecture videos
 oct 28: added functionality to the delete button
 Oct 29 - Nov 2: nothing
 Nov 3: did some research on passportJS
+Nov 4: worked on login function
 

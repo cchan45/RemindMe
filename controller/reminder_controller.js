@@ -4,7 +4,6 @@ let remindersController = {
     list: (req, res) => {
         res.render('reminder/index', {
             reminders: Database[0].reminders
-            
         });
     },
 

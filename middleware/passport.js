@@ -9,6 +9,7 @@ const localLogin = new LocalStrategy(
   (email, password, done) => {
     const user = userController.getUserByEmailIdAndPassword(email, password);
     return user
+        // "done" function calls serializeUser to create a session
       ? done(null, user)
       : done(null, false, {
           message: "Your login details are not valid. Please try again",
@@ -16,8 +17,9 @@ const localLogin = new LocalStrategy(
   }
 );
 
+//creates a session if user is in database
 passport.serializeUser(function (user, done) {
-  done(null, user.id);
+  done(null, user.id); // stores the userID inside the session
 });
 
 passport.deserializeUser(function (id, done) {

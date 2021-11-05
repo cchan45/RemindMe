@@ -1,19 +1,3 @@
-// let Database = {
-//     cindy: {
-        // reminders: [
-        //     {
-        //         id: 1,
-        //         title: 'abc',
-        //         description: 'abcabc',
-        //         completed: false
-        //     }
-        // ]
-//     },
-//     alex: {
-//         reminders: []
-//     }
-// }
-
 let Database = [
     {
         id: 1,
@@ -30,8 +14,18 @@ let Database = [
         ]
     },
     {
+        id: 2,
         name: "alex",
-        remidners: []
+        email: "alex123@yahoo.com",
+        password: "Alex456!",
+        reminders: [
+          {
+          id: 1,
+          title: 'alex',
+          description: 'reminder',
+          completed: false
+      }
+    ]
     }
 ]
 
