@@ -10,10 +10,10 @@ let authController = {
     },
 
     registerSubmit: (req, res) => {
-        for (let user in Database) {
+        for (let user in Database) { //checks if the email exists in the database already
             for (const  [key, value] of Object.entries(Database[user])) {
                 if (req.body.email === value) {
-                    res.send(`${req.body.email} already exists in the database`)
+                    return res.send(`${req.body.email} already exists in the database`)
                 }
             }
         }
@@ -24,6 +24,7 @@ let authController = {
             "password": req.body["password"],
             "reminders": []
         })
+        console.log(Database)
         const user = userModel.findOne(req.body["email"])
         req.login(user, (err) => {
             if (err){
