@@ -10,6 +10,13 @@ let authController = {
     },
 
     registerSubmit: (req, res) => {
+        for (let user in Database) {
+            for (const  [key, value] of Object.entries(Database[user])) {
+                if (req.body.email === value) {
+                    res.send(`${req.body.email} already exists in the database`)
+                }
+            }
+        }
         Database.push({
             "id": Database.length + 1,
             "name": req.body["name"],
