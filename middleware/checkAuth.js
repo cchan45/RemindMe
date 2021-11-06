@@ -5,7 +5,7 @@ module.exports = {
         return next();
       }
       res.redirect("/login");
-    },
+    },//checks if the user has a session currently running
     forwardAuthenticated: function (req, res, next) {
       if (!req.isAuthenticated()) {
         return next();

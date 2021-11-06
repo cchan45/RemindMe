@@ -1,4 +1,4 @@
-let { Database }= require('../database');
+let { Database, userModel }= require('../database');
 
 let authController = {
     login: (req, res) => {
@@ -9,10 +9,6 @@ let authController = {
         res.render('auth/register');
     },
 
-    loginSubmit: (req, res) => {
-        // implement
-    },
-
     registerSubmit: (req, res) => {
         Database.push({
             "id": Database.length + 1,
@@ -21,8 +17,14 @@ let authController = {
             "password": req.body["password"],
             "reminders": []
         })
-        console.log(Database)
-        res.redirect("/reminders")
+        const user = userModel.findOne(req.body["email"])
+        req.login(user, (err) => {
+            if (err){
+                res.send(err)
+            } else {
+                res.redirect("/reminders")
+            }
+        })
     }
 };
 

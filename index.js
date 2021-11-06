@@ -6,7 +6,7 @@ const reminderController = require('./controller/reminder_controller');
 const authController = require('./controller/auth_controller')
 const passport = require("./middleware/passport");
 const authRoute = require("./routes/authRoute");
-const { forwardAuthenticated, ensureAuthenticated } = require("./middleware/checkAuth");
+const { ensureAuthenticated } = require("./middleware/checkAuth");
 
 const app = express();
 
@@ -46,7 +46,6 @@ app.post('/register', authController.registerSubmit)
 
 /*routes below only work if the user is logged in 
 (i.e. doesn't need "ensureAuthenticated" function inside these routes)
-
 */
 app.get('/reminder/:id', reminderController.listOne);
 
@@ -58,7 +57,7 @@ app.post('/reminder/update/:id', reminderController.update);
 
 app.post('/reminder/delete/:id', reminderController.delete);
 
-// Fix this to work with passport! The registration does not need to work, you can use the fake database for this.
+//used for users logging in
 app.use('/', authRoute);
 
 app.listen(3001, function () {
