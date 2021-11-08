@@ -1,41 +1,64 @@
 const express = require('express');
-const app = express();
 const path = require('path');
 const ejsLayouts = require('express-ejs-layouts');
+const session = require("express-session");
 const reminderController = require('./controller/reminder_controller');
-const authController = require('./controller/auth_controller');
+const authController = require('./controller/auth_controller')
+const passport = require("./middleware/passport");
+const authRoute = require("./routes/authRoute");
+const { ensureAuthenticated } = require("./middleware/checkAuth");
+
+const app = express();
+
+app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.urlencoded({ extended: false }));
 
+app.use(
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      secure: false,
+      maxAge: 24 * 60 * 60 * 1000,
+    },
+  })
+);
+
 app.use(ejsLayouts);
 
-app.set('view engine', 'ejs');
 
-// Routes start here
+app.use(passport.initialize());
 
-app.get('/reminders', reminderController.list);
+app.use(passport.session());
 
-app.get('/reminder/new', reminderController.new);
+// Ensure user is logged in
+app.get('/reminders', ensureAuthenticated, reminderController.list);
+app.get('/reminder/new', ensureAuthenticated, reminderController.new);
 
+//Registration Page
+app.get('/register', authController.register)
+app.post('/register', authController.registerSubmit)
+
+/*routes below only work if the user is logged in 
+(i.e. doesn't need "ensureAuthenticated" function inside these routes)
+*/
 app.get('/reminder/:id', reminderController.listOne);
 
 app.get('/reminder/:id/edit', reminderController.edit);
 
 app.post('/reminder/', reminderController.create);
 
-// Implement this yourself
 app.post('/reminder/update/:id', reminderController.update);
 
-// Implement this yourself
 app.post('/reminder/delete/:id', reminderController.delete);
 
-// Fix this to work with passport! The registration does not need to work, you can use the fake database for this.
-app.get('/register', authController.register);
-app.get('/login', authController.login);
-app.post('/register', authController.registerSubmit);
-app.post('/login', authController.loginSubmit);
+//used for users logging in
+app.use('/', authRoute);
 
 app.listen(3001, function () {
     console.log(
