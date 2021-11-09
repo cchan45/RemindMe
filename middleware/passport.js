@@ -1,6 +1,9 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
+const GitHubStrategy = require('passport-github2').Strategy;
 const userController = require("../controller/userController");
+require('dotenv').config
+
 const localLogin = new LocalStrategy(
   {
     usernameField: "email",
@@ -16,6 +19,18 @@ const localLogin = new LocalStrategy(
         });
   }
 );
+
+const ghubLogin = passport.use(new GitHubStrategy({
+  clientID: process.env.GITHUB_CLIENT_ID,
+  clientSecret: process.env.GITHUB_CLIENT_SECRET,
+  callbackURL: process.env.GITHUB_HOST
+},
+(accessToken, refreshToken, profile, done) => {
+  User.findOrCreate({ githubId: profile.id }, function (err, user) {
+    return done(err, user);
+  });
+}
+));
 
 //creates a session if user is in database (only if user is logged in)
 passport.serializeUser(function (user, done) {

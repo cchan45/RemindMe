@@ -15,7 +15,7 @@ let Database = [
     },
     {
         id: 2,
-        name: "alex",
+        // name: "alex",
         email: "alex123@yahoo.com",
         password: "Alex456!",
         reminders: [
