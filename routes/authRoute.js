@@ -1,4 +1,5 @@
 const express = require("express");
+const authController = require('../controller/auth_controller')
 const passport = require("../middleware/passport");
 const { forwardAuthenticated } = require("../middleware/checkAuth");
 
@@ -10,13 +11,18 @@ router.post(
   "/login",
   passport.authenticate("local", {
     successRedirect: "/reminders",
-    failureRedirect: "/login",
+    failureRedirect: "/auth/login",
   }),
 );
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/login");
+  res.redirect("/auth/login");
 });
+
+//Registration Page
+router.get("/register", authController.register)
+router.post("/register", authController.registerSubmit)
+
 
 module.exports = router;

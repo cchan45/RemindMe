@@ -24,7 +24,6 @@ let authController = {
             "password": req.body["password"],
             "reminders": []
         })
-        console.log(Database)
         const user = userModel.findOne(req.body["email"])
         req.login(user, (err) => {
             if (err){
