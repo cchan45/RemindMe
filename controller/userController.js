@@ -9,6 +9,13 @@ const getUserByEmailIdAndPassword = (email, password) => {
   }
 };
 
+//checks if user exists by id in database
+const checkUserById = (id) => {
+  let user = userModel.checkById(id);
+  if (user) 
+    return true ?? false
+}
+
 const getUserById = (id) => {
   let user = userModel.findById(id);
   if (user) {
@@ -22,5 +29,5 @@ function isUserValid(user, password) {
 
 module.exports = {
   getUserByEmailIdAndPassword,
-  getUserById,
+  getUserById, checkUserById
 };

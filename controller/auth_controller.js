@@ -32,6 +32,16 @@ let authController = {
                 res.redirect("/reminders")
             }
         })
+    },
+    //creates db entry for github logins
+    githubRegister: (user) => {
+        Database.push(
+            {
+                "id": parseInt(user.id),
+                "name": user.displayname,
+                "reminders": []
+            }
+        )
     }
 };
 

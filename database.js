@@ -44,6 +44,11 @@ let userModel = {
       }
       throw new Error(`Couldn't find user with id: ${id}`);
     },
+    //checks db for user by id
+    checkById: (id) => {
+      const user = Database.find((user) => user.id === id); 
+        return user != null
+    },
   };
 
 module.exports = { Database, userModel };

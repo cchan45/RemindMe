@@ -24,5 +24,19 @@ router.get("/logout", (req, res) => {
 router.get("/register", authController.register)
 router.post("/register", authController.registerSubmit)
 
+//github login route
+router.get('/github',
+  passport.authenticate('github', { scope: [ 'user:email' ] }));
+
+router.get('/github/callback', 
+  passport.authenticate('github', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect to dashboard.
+    res.render('dashboard', { user: req.user });
+  }
+);
+
+
+router.use(passport.initialize())
 
 module.exports = router;
