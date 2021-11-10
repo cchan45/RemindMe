@@ -15,7 +15,7 @@ let Database = [
     },
     {
         id: 2,
-        // name: "alex",
+        name: "alex",
         email: "alex123@yahoo.com",
         password: "Alex456!",
         reminders: [
@@ -43,6 +43,12 @@ let userModel = {
         return user;
       }
       throw new Error(`Couldn't find user with id: ${id}`);
+    },
+    //checks db for user by id
+    checkById: (id) => {
+      const user = Database.find((user) => user.id === id);
+      if (user) 
+        return true ?? false
     },
   };
 
