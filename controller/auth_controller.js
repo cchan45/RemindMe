@@ -24,7 +24,6 @@ let authController = {
             "password": req.body["password"],
             "reminders": []
         })
-        console.log(Database)
         const user = userModel.findOne(req.body["email"])
         req.login(user, (err) => {
             if (err){
@@ -35,11 +34,11 @@ let authController = {
         })
     },
     //creates db entry for github logins
-    githubRegister: (req, res) => {
+    githubRegister: (user) => {
         Database.push(
             {
-                "id": parseInt(req.id),
-                "name": req.username,
+                "id": parseInt(user.id),
+                "name": user.displayname,
                 "reminders": []
             }
         )

@@ -10,24 +10,24 @@ router.post(
   "/login",
   passport.authenticate("local", {
     successRedirect: "/reminders",
-    failureRedirect: "/login",
+    failureRedirect: "/auth/login",
   }),
 );
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/login");
+  res.redirect("/auth/login");
 });
 
 //github login route
-router.get('/auth/github',
+router.get('/github',
   passport.authenticate('github', { scope: [ 'user:email' ] }));
 
-router.get('/auth/github/callback', 
+router.get('/github/callback', 
   passport.authenticate('github', { failureRedirect: '/login' }),
   function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/reminders');
+    // Successful authentication, redirect to dashboard.
+    res.render('dashboard', { user: req.user });
   }
 );
 
