@@ -46,9 +46,8 @@ let userModel = {
     },
     //checks db for user by id
     checkById: (id) => {
-      const user = Database.find((user) => user.id === id);
-      if (user) 
-        return true ?? false
+      const user = Database.find((user) => user.id === id); 
+        return user != null
     },
   };
 
