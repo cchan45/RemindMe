@@ -20,4 +20,7 @@ Oct 29 - Nov 2: nothing
 Nov 3: did some research on passportJS
 Nov 4: worked on login function
 Nov 5: working on register function
-
+Nov 6-7: nothing
+Nov 8: cleaned up the code
+Nov 9: nothing
+Nov 10: worked on GitHub login
