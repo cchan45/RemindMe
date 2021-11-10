@@ -3,7 +3,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const GitHubStrategy = require('passport-github2').Strategy;
 const userController = require("../controller/userController");
 const authController = require("../controller/auth_controller")
-require('dotenv').config
+require('dotenv').config()
 
 const localLogin = new LocalStrategy(
   {
