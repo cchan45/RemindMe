@@ -29,7 +29,7 @@ router.get('/github',
   passport.authenticate('github', { scope: [ 'user:email' ] }));
 
 router.get('/github/callback', 
-  passport.authenticate('github', { failureRedirect: '/login' }),
+  passport.authenticate('github', { failureRedirect: '/auth/login' }),
   function(req, res) {
     // Successful authentication, redirect to dashboard.
     res.render('dashboard', { user: req.user });
