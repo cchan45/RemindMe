@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const reminderController = require('../controller/reminder_controller');
+const reminderController = require('../controller/reminderController');
 const {ensureAuthenticated} = require("../middleware/checkAuth");
 
 // Ensures that a user is logged in to access the dashboard
