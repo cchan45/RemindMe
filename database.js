@@ -19,36 +19,36 @@ let Database = [
         email: "alex123@yahoo.com",
         password: "Alex456!",
         reminders: [
-          {
-          id: 1,
-          title: 'alex',
-          description: 'reminder',
-          completed: false
-      }
-    ]
+            {
+                id: 1,
+                title: 'alex',
+                description: 'reminder',
+                completed: false
+            }
+        ]
     }
 ]
 
 let userModel = {
     findOne: (email) => {
-      const user = Database.find((user) => user.email === email);
-      if (user) {
-        return user;
-      }
-      throw new Error(`Couldn't find user with email: ${email}`);
+        const user = Database.find((user) => user.email === email);
+        if (user) {
+            return user;
+        }
+        throw new Error(`Couldn't find user with email: ${email}`);
     },
     findById: (id) => {
-      const user = Database.find((user) => user.id === id);
-      if (user) {
-        return user;
-      }
-      throw new Error(`Couldn't find user with id: ${id}`);
+        const user = Database.find((user) => user.id === id);
+        if (user) {
+            return user;
+        }
+        throw new Error(`Couldn't find user with id: ${id}`);
     },
     //checks db for user by id
     checkById: (id) => {
-      const user = Database.find((user) => user.id === id); 
+        const user = Database.find((user) => user.id === id);
         return user != null
     },
-  };
+};
 
-module.exports = { Database, userModel };
+module.exports = {Database, userModel};

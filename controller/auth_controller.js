@@ -1,4 +1,4 @@
-let { Database, userModel }= require('../database');
+let {Database, userModel} = require('../database');
 
 let authController = {
     login: (req, res) => {
@@ -11,7 +11,7 @@ let authController = {
 
     registerSubmit: (req, res) => {
         for (let user in Database) { //checks if the email exists in the database already
-            for (const  [key, value] of Object.entries(Database[user])) {
+            for (const [key, value] of Object.entries(Database[user])) {
                 if (req.body.email === value) {
                     return res.send(`${req.body.email} already exists in the database`)
                 }
@@ -26,7 +26,7 @@ let authController = {
         })
         const user = userModel.findOne(req.body["email"])
         req.login(user, (err) => {
-            if (err){
+            if (err) {
                 res.send(err)
             } else {
                 res.redirect("/reminders")
