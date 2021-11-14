@@ -63,7 +63,7 @@ let remindersController = {
     delete: (req, res) => {
         let getParam = req.params.id;
         let searchResult = req.user.reminders.find(reminder => {
-            return reminder.id === getParam
+            return reminder.id == getParam
         })
         //deleting every element in the object that matches the id number in the parameter
         for (let item in searchResult) {
