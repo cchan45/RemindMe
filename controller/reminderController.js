@@ -39,7 +39,7 @@ let remindersController = {
     edit: (req, res) => {
         let reminderToFind = req.params.id;
         let searchResult = req.user.reminders.find(function (reminder) {
-            return reminder.id === reminderToFind;
+            return reminder.id == reminderToFind;
         });
         res.render('reminder/edit', {
             reminderItem: searchResult
@@ -48,7 +48,7 @@ let remindersController = {
 
     update: (req, res) => {
         const searchResult = req.user.reminders.find(reminder => {
-            return reminder.id === req.params.id;
+            return reminder.id == req.params.id;
         });
 
         searchResult.title = req.body.title;

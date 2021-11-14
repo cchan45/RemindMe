@@ -22,6 +22,7 @@ let authController = {
             'name': req.body['name'],
             'email': req.body['email'],
             'password': req.body['password'],
+            'admin': false,
             'reminders': []
         })
         const user = userModel.findOne(req.body['email'])
@@ -39,6 +40,7 @@ let authController = {
             {
                 'id': parseInt(user.id),
                 'name': user.displayname,
+                'admin': false,
                 'reminders': []
             }
         )
