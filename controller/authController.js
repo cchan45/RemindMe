@@ -18,18 +18,18 @@ let authController = {
             }
         }
         Database.push({
-            "id": Database.length + 1,
-            "name": req.body["name"],
-            "email": req.body["email"],
-            "password": req.body["password"],
-            "reminders": []
+            'id': Database.length + 1,
+            'name': req.body['name'],
+            'email': req.body['email'],
+            'password': req.body['password'],
+            'reminders': []
         })
-        const user = userModel.findOne(req.body["email"])
+        const user = userModel.findOne(req.body['email'])
         req.login(user, (err) => {
             if (err) {
                 res.send(err)
             } else {
-                res.redirect("/reminders")
+                res.redirect('/reminders')
             }
         })
     },
@@ -37,9 +37,9 @@ let authController = {
     githubRegister: (user) => {
         Database.push(
             {
-                "id": parseInt(user.id),
-                "name": user.displayname,
-                "reminders": []
+                'id': parseInt(user.id),
+                'name': user.displayname,
+                'reminders': []
             }
         )
     }

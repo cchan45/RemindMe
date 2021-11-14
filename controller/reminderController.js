@@ -1,5 +1,3 @@
-let {Database} = require('../database');
-
 let remindersController = {
     list: (req, res) => {
         res.render('reminder/index', {
@@ -16,7 +14,7 @@ let remindersController = {
         let searchResult = req.user.reminders.find(function (reminder) {
             return reminder.id == reminderToFind;
         });
-        if (searchResult != undefined) {
+        if (searchResult !== undefined) {
             res.render('reminder/single-reminder', {
                 reminderItem: searchResult
             });
@@ -41,7 +39,7 @@ let remindersController = {
     edit: (req, res) => {
         let reminderToFind = req.params.id;
         let searchResult = req.user.reminders.find(function (reminder) {
-            return reminder.id == reminderToFind;
+            return reminder.id === reminderToFind;
         });
         res.render('reminder/edit', {
             reminderItem: searchResult
@@ -50,12 +48,12 @@ let remindersController = {
 
     update: (req, res) => {
         const searchResult = req.user.reminders.find(reminder => {
-            return reminder.id == req.params.id;
+            return reminder.id === req.params.id;
         });
 
         searchResult.title = req.body.title;
         searchResult.description = req.body.description;
-        searchResult.completed = req.body.completed == 'true' ? true : false;
+        searchResult.completed = req.body.completed === 'true';
 
         res.render('reminder/single-reminder', {
             reminderItem: searchResult
@@ -65,13 +63,13 @@ let remindersController = {
     delete: (req, res) => {
         let getParam = req.params.id;
         let searchResult = req.user.reminders.find(reminder => {
-            return reminder.id == getParam
+            return reminder.id === getParam
         })
         //deleting every element in the object that matches the id number in the parameter
         for (let item in searchResult) {
             delete searchResult[item]
         }
-        // replacing the "reminders" array in database.js with the new fliter array to get rid of the empty object
+        // replacing the 'reminders' array in database.js with the new fliter array to get rid of the empty object
         req.user.reminders = req.user.reminders.filter(
             reminder => !(Object.keys(reminder).length === 0)
         )

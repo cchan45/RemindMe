@@ -1,9 +1,10 @@
 let Database = [
     {
         id: 1,
-        name: "cindy",
-        email: "cindy@gmail.com",
-        password: "cindy123",
+        name: 'cindy',
+        email: 'cindy@gmail.com',
+        password: 'cindy123',
+        admin: true,
         reminders: [
             {
                 id: 1,
@@ -15,9 +16,10 @@ let Database = [
     },
     {
         id: 2,
-        name: "alex",
-        email: "alex123@yahoo.com",
-        password: "Alex456!",
+        name: 'alex',
+        email: 'alex123@yahoo.com',
+        password: 'Alex456!',
+        admin: false,
         reminders: [
             {
                 id: 1,
@@ -51,4 +53,7 @@ let userModel = {
     },
 };
 
-module.exports = {Database, userModel};
+module.exports = {
+    Database,
+    userModel
+};
