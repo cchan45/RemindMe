@@ -5,13 +5,12 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" href="/reminders">Reminder List</a>
-      <a class="nav-item nav-link" href="/reminder/new">Create</a>
       <% if (user) { %>
+        <a class="nav-item nav-link" href="/reminders">Reminder List</a>
+        <a class="nav-item nav-link" href="/reminder/new">Create</a>
         <% if (user.admin) { %>
             <a class="nav-item nav-link" href="/admin">Admin</a>
         <% } %>
-        <p class="nav-item">Welcome, <%= user.name %></p>
         <a href="/auth/logout" class="btn btn-secondary">Logout</a>
       <% } else { %>
         <a href="/auth/register" class="btn btn-danger">Register</a>

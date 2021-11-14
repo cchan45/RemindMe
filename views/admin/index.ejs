@@ -1,24 +1,27 @@
-<table class="table col-md-4">
-    <thead>
-        <tr>
-            <th>Session ID</th>
-            <th>User ID</th>
-            <th>Revoke</th>
-        </tr>
-    <tbody>
-        <% for (const [sessionId, session] of Object.entries(sessions)) { %>
-            <tr>
-                <td>
-                    <%= sessionId %>
-                </td>
-                <td>
-                    <%= session.passport.user %>
-                </td>
-                <td>
-                    <a class="btn btn-primary" href="<%= "/admin/revoke/" + sessionId %>">Revoke</a>
-                </td>
-            </tr>
-        <% } %>
-    </tbody>
-</table>
+<div class="container">
+    <h1 class="page-header">Admin Panel</h1>
 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Session ID</th>
+                <th>User ID</th>
+                <th>Revoke</th>
+            </tr>
+        <tbody>
+            <% for (const [sessionId, session] of Object.entries(sessions)) { %>
+                <tr>
+                    <td>
+                        <%= sessionId %>
+                    </td>
+                    <td>
+                        <%= session.passport.user %>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" href="<%= "/admin/revoke/" + sessionId %>">Revoke</a>
+                    </td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
