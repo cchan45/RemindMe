@@ -2,18 +2,10 @@
 
         listSessions: (req, res) => {
 
-            const sessionsToShow = [];
-
-            // super cursed, should rewrite soon tm
-            Array.of(req.sessionStore.sessions).forEach(sessions => {
-                const sessionId =  Object.keys(sessions)[0];
-                Object.values(sessions).forEach(session => {
-                    sessionsToShow[sessionId] = JSON.parse(session)
-                });
-            });
-
+            // gets all the active sessions and parses(converts) them into a object
+            const parseSession = JSON.parse(JSON.stringify(req.sessionStore.sessions))
             res.render('admin/index', {
-                sessions: sessionsToShow
+                sessions: parseSession
             });
         },
 
