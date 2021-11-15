@@ -1,5 +1,3 @@
-let {Database} = require('../database');
-
 let remindersController = {
     list: (req, res) => {
         res.render('reminder/index', {
@@ -16,7 +14,7 @@ let remindersController = {
         let searchResult = req.user.reminders.find(function (reminder) {
             return reminder.id == reminderToFind;
         });
-        if (searchResult != undefined) {
+        if (searchResult !== undefined) {
             res.render('reminder/single-reminder', {
                 reminderItem: searchResult
             });
@@ -55,7 +53,7 @@ let remindersController = {
 
         searchResult.title = req.body.title;
         searchResult.description = req.body.description;
-        searchResult.completed = req.body.completed == 'true' ? true : false;
+        searchResult.completed = req.body.completed === 'true';
 
         res.render('reminder/single-reminder', {
             reminderItem: searchResult
@@ -71,7 +69,7 @@ let remindersController = {
         for (let item in searchResult) {
             delete searchResult[item]
         }
-        // replacing the "reminders" array in database.js with the new fliter array to get rid of the empty object
+        // replacing the 'reminders' array in database.js with the new fliter array to get rid of the empty object
         req.user.reminders = req.user.reminders.filter(
             reminder => !(Object.keys(reminder).length === 0)
         )

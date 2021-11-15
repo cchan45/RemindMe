@@ -20,7 +20,7 @@ h6 {
 header.masthead {
     position: relative;
     background-color: #fff;
-    background: url("https://image.freepik.com/free-vector/reading-list-concept-illustration_114360-1005.jpg") no-repeat right center;
+    background: url('https://image.freepik.com/free-vector/reading-list-concept-illustration_114360-1005.jpg') no-repeat right center;
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
@@ -107,7 +107,7 @@ header.masthead h1 {
 .call-to-action {
     position: relative;
     background-color: #343a40;
-    background: url("./img/bg-masthead.jpg") no-repeat center center;
+    background: url('./img/bg-masthead.jpg') no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

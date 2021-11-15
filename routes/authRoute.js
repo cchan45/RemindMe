@@ -1,28 +1,28 @@
-const express = require("express");
+const express = require('express');
 const authController = require('../controller/authController')
-const passport = require("../middleware/passport");
-const {forwardAuthenticated} = require("../middleware/checkAuth");
+const passport = require('../middleware/passport');
+const { forwardAuthenticated } = require('../middleware/checkAuth');
 
 const router = express.Router();
 
-router.get("/login", forwardAuthenticated, (req, res) => res.render("auth/login"));
+router.get('/login', forwardAuthenticated, (req, res) => res.render('auth/login'));
 
 router.post(
-    "/login",
-    passport.authenticate("local", {
-        successRedirect: "/reminders",
-        failureRedirect: "/auth/login",
+    '/login',
+    passport.authenticate('local', {
+        successRedirect: '/reminders',
+        failureRedirect: '/auth/login',
     }),
 );
 
-router.get("/logout", (req, res) => {
+router.get('/logout', (req, res) => {
     req.logout();
-    res.redirect("/auth/login");
+    res.redirect('/auth/login');
 });
 
 //Registration Page
-router.get("/register", authController.register)
-router.post("/register", authController.registerSubmit)
+router.get('/register', authController.register)
+router.post('/register', authController.registerSubmit)
 
 //github login route
 router.get('/github',

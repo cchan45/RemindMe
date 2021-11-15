@@ -4,13 +4,21 @@ module.exports = {
         if (req.isAuthenticated()) {
             return next();
         }
-        res.redirect("/auth/login");
-    },//checks if the user has a session currently running
+        res.redirect('/auth/login');
+    },
+    //checks if the user has a session currently running
     forwardAuthenticated: function (req, res, next) {
         if (!req.isAuthenticated()) {
             return next();
         }
-        res.redirect("/reminders");
+        res.redirect('/reminders');
     },
+    // checks if the user is an admin
+    ensureAdmin: function (req, res, next) {
+        if (req.user.admin) {
+            return next();
+        }
+        res.redirect('/reminders');
+    }
 };
   

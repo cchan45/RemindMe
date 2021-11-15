@@ -1,4 +1,4 @@
-const {userModel} = require("../database");
+const { userModel } = require('../database');
 
 const getUserByEmailIdAndPassword = (email, password) => {
     let user = userModel.findOne(email);
@@ -11,9 +11,7 @@ const getUserByEmailIdAndPassword = (email, password) => {
 
 //checks if user exists by id in database
 const checkUserById = (id) => {
-    let user = userModel.checkById(id);
-    if (user)
-        return true ?? false
+    return userModel.checkById(id);
 }
 
 const getUserById = (id) => {

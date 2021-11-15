@@ -1,13 +1,12 @@
 const express = require('express');
 const path = require('path');
 const ejsLayouts = require('express-ejs-layouts');
-const session = require("express-session");
-// const reminderController = require('./controller/reminder_controller');
-// const authController = require('./controller/auth_controller')
-const passport = require("./middleware/passport");
-const indexRoute = require("./routes/indexRoute");
-const authRoute = require("./routes/authRoute");
-// const { ensureAuthenticated } = require("./middleware/checkAuth");
+const session = require('express-session');
+
+const passport = require('./middleware/passport');
+const indexRoute = require('./routes/indexRoute');
+const authRoute = require('./routes/authRoute');
+const passUser = require('./middleware/passUser');
 
 const app = express();
 
@@ -15,11 +14,13 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({
+    extended: false
+}));
 
 app.use(
     session({
-        secret: "secret",
+        secret: 'secret',
         resave: false,
         saveUninitialized: false,
         cookie: {
@@ -32,10 +33,11 @@ app.use(
 
 app.use(ejsLayouts);
 
-
 app.use(passport.initialize());
 
 app.use(passport.session());
+
+app.use(passUser);
 
 //used for users logging in
 app.use('/', indexRoute)
