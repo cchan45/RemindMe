@@ -3,6 +3,7 @@ const router = express.Router();
 const reminderController = require('../controller/reminderController');
 const adminController = require('../controller/adminController');
 const { ensureAuthenticated, ensureAdmin } = require('../middleware/checkAuth');
+const profileController = require('../controller/profileController');
 
 // Ensures that a user is logged in to access the dashboard
 router.get('/dashboard', ensureAuthenticated, (req, res) => res.render('dashboard'))
@@ -26,5 +27,7 @@ router.post('/reminder/delete/:id', reminderController.delete);
 
 router.get('/admin', ensureAdmin, adminController.listSessions);
 router.get('/admin/revoke/:sessionId', ensureAdmin, adminController.revokeSession);
+
+router.get('/profile', ensureAuthenticated, profileController.displayProfile)
 
 module.exports = router;

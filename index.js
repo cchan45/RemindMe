@@ -2,6 +2,9 @@ const express = require('express');
 const path = require('path');
 const ejsLayouts = require('express-ejs-layouts');
 const session = require('express-session');
+require('dotenv').config()
+
+//For Unsplash api
 
 const passport = require('./middleware/passport');
 const indexRoute = require('./routes/indexRoute');
@@ -12,7 +15,7 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'))); //building a dynamic path to the "public" folder
 
 app.use(express.urlencoded({
     extended: false
@@ -38,6 +41,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(passUser);
+
+
 
 //used for users logging in
 app.use('/', indexRoute)
