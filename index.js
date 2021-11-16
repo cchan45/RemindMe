@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');
 const ejsLayouts = require('express-ejs-layouts');
 const session = require('express-session');
-require('dotenv').config()
 
 //For Unsplash api
 
@@ -41,8 +40,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(passUser);
-
-
 
 //used for users logging in
 app.use('/', indexRoute)

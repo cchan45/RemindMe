@@ -15,6 +15,7 @@
   "license": "ISC",
   "homepage": "http://http",
   "dependencies": {
+    "axios": "^0.24.0",
     "body-parser": "^1.15.2",
     "dotenv": "^10.0.0",
     "ejs": "^2.5.5",
