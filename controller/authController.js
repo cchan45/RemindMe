@@ -36,11 +36,10 @@ let authController = {
     },
     //creates db entry for github logins
     githubRegister: (user) => {
-        console.log(user)
         Database.push(
             {
                 'id': parseInt(user.id),
-                'name': user.displayname,
+                'name': user.username,
                 'admin': false,
                 'reminders': []
             }
