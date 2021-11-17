@@ -12,10 +12,10 @@
             <% for (const [sessionId, session] of Object.entries(sessions)) { %>
                 <tr>
                     <td>
-                        <%= sessionId %>
+                        <kbd><%= sessionId %></kbd>
                     </td>
                     <td>
-                        <%= userModel.findById(JSON.parse(session).passport.user).name  %> (ID: <%= JSON.parse(session).passport.user %>)
+                        <%= userModel.findById(JSON.parse(session).passport.user).name  %> (ID: <kbd><%= JSON.parse(session).passport.user %></kbd>)
                     </td>
                     <td>
                         <a class="btn btn-primary" href="<%= "/admin/revoke/" + sessionId %>">Revoke</a>
