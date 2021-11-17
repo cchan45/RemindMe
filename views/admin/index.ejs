@@ -9,19 +9,19 @@
                 <th>Revoke</th>
             </tr>
         <tbody>
-                <% for (const [sessionId, session] of Object.entries(sessions)) { %>
-                    <tr>
-                        <td>
-                            <%= sessionId %>
-                        </td>
-                        <td>
-                            <%= JSON.parse(session).passport.user %>
-                        </td>
-                        <td>
-                            <a class="btn btn-primary" href="<%= "/admin/revoke/" + sessionId %>">Revoke</a>
-                        </td>
-                    </tr>
-                <% } %>
+            <% for (const [sessionId, session] of Object.entries(sessions)) { %>
+                <tr>
+                    <td>
+                        <%= sessionId %>
+                    </td>
+                    <td>
+                        <%= JSON.parse(session).passport.user %>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" href="<%= "/admin/revoke/" + sessionId %>">Revoke</a>
+                    </td>
+                </tr>
+            <% } %>
         </tbody>
     </table>
 </div>
