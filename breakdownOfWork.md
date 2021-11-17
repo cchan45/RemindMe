@@ -10,6 +10,7 @@ Nov 4: watch video 2
 Nov 5: watch video 3 
 Nov 13: start on admin panel functionality
 Nov 14: finish admin panel functionality
+Nov 16: help with profile pic stuff
 
 ### Anthony
 
