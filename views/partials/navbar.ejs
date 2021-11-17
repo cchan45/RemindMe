@@ -1,12 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/reminders">Reminder List</a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
+        <ul class="navbar-nav mr-auto">
             <% if (user) { %>
 
                 <li class="nav-item dropdown">
@@ -19,15 +15,33 @@
                     </div>
                 </li>
 
-                <a class="nav-item nav-link" href="/profile">Profile</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profile</a>
+                </li>
+
+            <% } %>
+        </ul>
+
+        <div class="my-2 my-lg-0 navbar-nav">
+            <% if (user) { %>
 
                 <% if (user.admin) { %>
-                    <a class="nav-item nav-link" href="/admin">Admin</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">Admin</a>
+                    </li>
                 <% } %>
+
+                <li class="nav-item">
                     <a href="/auth/logout" class="btn btn-secondary">Logout</a>
-                <% } else { %>
+                </li>
+
+            <% } else { %>
+
+                <li class="nav-item">
                     <a href="/auth/register" class="btn btn-danger">Register</a>
-                <% } %>
+                </li>
+
+            <% } %>
         </div>
     </div>
 
