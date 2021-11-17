@@ -18,7 +18,11 @@
                         <%= userModel.findById(JSON.parse(session).passport.user).name  %> (ID: <kbd><%= JSON.parse(session).passport.user %></kbd>)
                     </td>
                     <td>
-                        <a class="btn btn-primary" href="<%= "/admin/revoke/" + sessionId %>">Revoke</a>
+                        <% if (JSON.parse(session).passport.user != user.id) { %>
+                            <a class="btn btn-primary" href="<%= "/admin/revoke/" + sessionId %>">Revoke</a>
+                        <% } else { %>
+                            <button class="btn btn-primary" disabled>Revoke</button>
+                        <% } %>
                     </td>
                 </tr>
             <% } %>
