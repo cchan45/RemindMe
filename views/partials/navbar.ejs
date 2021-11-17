@@ -8,16 +8,26 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <% if (user) { %>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                        Reminders
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/reminders">List</a>
+                        <a class="dropdown-item" href="/reminder/new">Create</a>
+                    </div>
+                </li>
+
                 <a class="nav-item nav-link" href="/profile">Profile</a>
-                <a class="nav-item nav-link" href="/reminders">Reminder List</a>
-                <a class="nav-item nav-link" href="/reminder/new">Create</a>
+
                 <% if (user.admin) { %>
                     <a class="nav-item nav-link" href="/admin">Admin</a>
                 <% } %>
-                <a href="/auth/logout" class="btn btn-secondary">Logout</a>
-            <% } else { %>
-                <a href="/auth/register" class="btn btn-danger">Register</a>
-            <% } %>
+                    <a href="/auth/logout" class="btn btn-secondary">Logout</a>
+                <% } else { %>
+                    <a href="/auth/register" class="btn btn-danger">Register</a>
+                <% } %>
         </div>
     </div>
 
