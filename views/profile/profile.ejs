@@ -1,4 +1,11 @@
 <div class="container">
-    <h1>Hello <%= user.name %></h1>
-    <img id="img" src="<%= user.profile_picture %>" alt="Image not loaded">
+    <h1 class="page-header">Profile</h1>
+
+    <p><strong>Username: </strong> <%= user.name %></p>
+
+    <p><strong>Email: </strong> <%= user.email %></p>
+
+    <p><strong>Profile Image:</strong>
+        <img id="img" src="<%= user.profile_picture %>" alt="Image not loaded" height="100px">
+    </p>
 </div>

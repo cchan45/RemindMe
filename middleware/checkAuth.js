@@ -1,24 +1,20 @@
 module.exports = {
     //checks if the user is authenticated (logged in)
-    ensureAuthenticated: function (req, res, next) {
-        if (req.isAuthenticated()) {
-            return next();
-        }
-        res.redirect('/auth/login');
+    ensureAuthenticated: (req, res, next) => {
+        return req.isAuthenticated()
+            ? next()
+            : res.redirect('/auth/login');
     },
-    //checks if the user has a session currently running
-    forwardAuthenticated: function (req, res, next) {
-        if (!req.isAuthenticated()) {
-            return next();
-        }
-        res.redirect('/reminders');
+    //checks if the user has a session currently running (is logged in)
+    forwardAuthenticated: (req, res, next) => {
+        return !req.isAuthenticated()
+            ? next()
+            : res.redirect('/reminders');
     },
     // checks if the user is an admin
-    ensureAdmin: function (req, res, next) {
-        if (req.user.admin) {
-            return next();
-        }
-        res.redirect('/reminders');
+    ensureAdmin: (req, res, next) => {
+        return req.user.admin
+            ? next()
+            : res.redirect('/reminders');
     }
 };
-  
