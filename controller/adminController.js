@@ -1,11 +1,13 @@
-    const adminController = {
+const { userModel } = require("../database");
+const adminController = {
 
         listSessions: (req, res) => {
 
             // gets all the active sessions and parses(converts) them into a object
             const parseSession = JSON.parse(JSON.stringify(req.sessionStore.sessions))
             res.render('admin/index', {
-                sessions: parseSession
+                sessions: parseSession,
+                userModel: userModel,
             });
         },
 

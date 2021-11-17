@@ -5,7 +5,7 @@
         <thead>
             <tr>
                 <th>Session ID</th>
-                <th>User ID</th>
+                <th>User</th>
                 <th>Revoke</th>
             </tr>
         <tbody>
@@ -15,7 +15,7 @@
                         <%= sessionId %>
                     </td>
                     <td>
-                        <%= JSON.parse(session).passport.user %>
+                        <%= userModel.findById(JSON.parse(session).passport.user).name  %> (ID: <%= JSON.parse(session).passport.user %>)
                     </td>
                     <td>
                         <a class="btn btn-primary" href="<%= "/admin/revoke/" + sessionId %>">Revoke</a>
