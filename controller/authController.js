@@ -39,7 +39,7 @@ let authController = {
         Database.push(
             {
                 'id': parseInt(user.id),
-                'name': user.displayname,
+                'name': user.username,
                 'admin': false,
                 'reminders': []
             }

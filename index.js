@@ -3,6 +3,8 @@ const path = require('path');
 const ejsLayouts = require('express-ejs-layouts');
 const session = require('express-session');
 
+//For Unsplash api
+
 const passport = require('./middleware/passport');
 const indexRoute = require('./routes/indexRoute');
 const authRoute = require('./routes/authRoute');
@@ -12,7 +14,7 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'))); //building a dynamic path to the "public" folder
 
 app.use(express.urlencoded({
     extended: false

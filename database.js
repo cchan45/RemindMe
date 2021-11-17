@@ -5,6 +5,7 @@ let Database = [
         email: 'cindy@gmail.com',
         password: 'cindy123',
         admin: true,
+        profile_picture: 'https://images.unsplash.com/photo-1634883966638-ba2c79927cd8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNzU5Mjl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MzcwNDMxNDg&ixlib=rb-1.2.1&q=80&w=400',
         reminders: [
             {
                 id: 1,
@@ -20,6 +21,7 @@ let Database = [
         email: 'alex123@yahoo.com',
         password: 'Alex456!',
         admin: false,
+        profile_picture: 'https://images.unsplash.com/photo-1634656658011-0af928be8607?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNzU5Mjl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MzcwNDMxNzk&ixlib=rb-1.2.1&q=80&w=400',
         reminders: [
             {
                 id: 1,
