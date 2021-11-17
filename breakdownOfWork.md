@@ -25,11 +25,14 @@ Nov 8: started with implementing dotenv and figuring out routing for github stra
 I worked on the following tasks:
 oct 27: watched all the lecture videos 
 oct 28: added functionality to the delete button 
-Oct 29 - Nov 2: nothing 
+
 Nov 3: did some research on passportJS 
 Nov 4: worked on login function 
 Nov 5: working on register function 
-Nov 6-7: nothing 
+
 Nov 8: cleaned up the code 
-Nov 9: nothing
+
 Nov 10: worked on GitHub login
+
+Nov 14: worked on admin panel, revoking a user, creating the html table for sessions
+Nov 15: generated a random profile picture for new users
