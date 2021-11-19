@@ -53,7 +53,7 @@ let remindersController = {
 
         searchResult.title = req.body.title;
         searchResult.description = req.body.description;
-        searchResult.completed = req.body.completed === 'true'; //Returns True to the single-reminder ejs page if the "completed" variable in req.body.completed is 'true, else it returns False
+        searchResult.completed = req.body.completed === 'true'; //Returns True to the single-reminder ejs page if the 'completed' variable in req.body.completed is 'true, else it returns False
 
         res.render('reminder/single-reminder', {
             reminderItem: searchResult

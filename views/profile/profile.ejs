@@ -8,4 +8,21 @@
     <p><strong>Profile Image:</strong>
         <img id="img" src="<%= user.profile_picture %>" alt="Image not loaded" height="100px">
     </p>
+
+    <strong>Upload Profile Image:
+        <br>
+        <input type="file" name="file" id="file" accept="image/*">
+    </strong>
 </div>
+<script>
+document.getElementById("file").addEventListener("change", (ev) => {
+    ev.preventDefault();
+    const formdata = new FormData();
+    formdata.append("image", ev.target.files[0]);
+    fetch("http://localhost:3001/uploads", {
+        method: "POST",
+        body: formdata,
+    })
+    .then(_ => window.location.reload());
+});
+</script>
