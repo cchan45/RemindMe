@@ -12,6 +12,7 @@ Nov 13: start on admin panel functionality
 Nov 14: finish admin panel functionality
 Nov 16: help with profile pic stuff
 Nov 17: clean up ejs, rewrite navbar, enhance profile page + admin page
+Nov 18: Add custom profile photo feature
 
 ### Anthony
 
