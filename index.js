@@ -1,3 +1,7 @@
+//Database Stuff
+const {PrismaClient} = require("@prisma/client");
+const prisma = new PrismaClient();
+
 const express = require('express');
 const path = require('path');
 const ejsLayouts = require('express-ejs-layouts');
@@ -9,6 +13,36 @@ const passUser = require('./middleware/passUser');
 const imgur = require('imgur');
 const multer = require('multer');
 const fs = require('fs');
+
+//creates a user into the database (hard coded data rn, have to make it dynamic cause of register function)
+async function createCindy() {
+
+    const newUser = await prisma.user.create({
+        data: {
+            name: 'cindy',
+            email: 'cindy@gmail.com',
+            password: 'cindy123',
+            admin: true,
+            profile_picture: 'https://images.unsplash.com/photo-1634883966638-ba2c79927cd8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNzU5Mjl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MzcwNDMxNDg&ixlib=rb-1.2.1&q=80&w=400',
+        },
+    });
+
+    const newReminder = await prisma.reminder.create({
+        data: {
+            title: 'abc',
+            description: 'This is a random description!',
+            completed: false,
+            userId: newUser.id,
+        },
+    });
+
+    const newUserWithReminders = await prisma.user.findUnique({
+        where: {
+            email: 'cindy@gmail.com',
+        },
+        include: {reminders: true},
+    });
+}
 
 const storage = multer.diskStorage({
     destination: './uploads',
@@ -72,6 +106,14 @@ app.post('/uploads/', async (req, res) => {
         console.log('error', error);
     }
 });
+
+createCindy()
+    .catch((err) => {
+        console.log(err)
+    })
+    .finally(async () => {
+        await prisma.$disconnect()
+    })
 
 app.listen(3001, function () {
     console.log(
