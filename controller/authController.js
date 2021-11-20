@@ -1,4 +1,6 @@
-let {Database, userModel} = require('../database');
+let {userModel} = require('../database');
+const {PrismaClient} = require("@prisma/client");
+const prisma = new PrismaClient();
 
 let authController = {
     login: (req, res) => {
@@ -9,31 +11,24 @@ let authController = {
         res.render('auth/register');
     },
 
-    registerSubmit: (req, res) => {
-        for (let user in Database) { //checks if the email exists in the database already
-            for (const [key, value] of Object.entries(Database[user])) {
-                if (req.body.email === value) {
-                    return res.send(`${req.body.email} already exists in the database`)
-                }
-            }
+    registerSubmit: async (req, res) => {
+        //checks if the email exists in the database already
+        const {email, name, password} = req.body
+        const existingUser = await prisma.user.findUnique({where: {email}})
+        if (existingUser) {
+            res.send(`${email} already exists in the database`)
         }
-        Database.push({
-            'id': Database.length + 1,
-            'name': req.body['name'],
-            'email': req.body['email'],
-            'password': req.body['password'],
-            'admin': false,
-            'reminders': []
-        })
-        const user = userModel.findOne(req.body['email'])
-        req.login(user, (err) => {
-            if (err) {
-                res.send(err)
-            } else {
-                res.redirect('/reminders')
-            }
+        const createUser = await prisma.user.create({
+            data: {
+                "name": name,
+                "email": email,
+                "password": password,
+                admin: false,
+                profile_picture: "",
+            },
         })
     },
+
     //creates db entry for github logins
     githubRegister: (user) => {
         Database.push(
