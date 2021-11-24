@@ -1,4 +1,4 @@
-const { userModel } = require('../database');
+const { userModel } = require('../userModel');
 
 const adminController = {
 

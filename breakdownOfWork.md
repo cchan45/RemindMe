@@ -22,6 +22,7 @@ Oct 31: watched video 3 Nov 6: watched some
 of the passport js video on the notion, looked over github portion
 Nov 7: read up on dotenv and github passport strategy
 Nov 8: started with implementing dotenv and figuring out routing for github strat
+Nov 23: completed local login
 
 ### Chris
 
@@ -39,3 +40,9 @@ Nov 10: worked on GitHub login
 
 Nov 14: worked on admin panel, revoking a user, creating the html table for sessions
 Nov 15: generated a random profile picture for new users
+
+Nov 19: set up SQLite, Prisma, and got Register function working (inserts them into the database)
+Nov 20: converted Github login and Register functionality into using SQlite
+Nov 21: Converted all the code to communciate with the database
+Nov 22: fixed a bug with github login, cleaned up reminder controller
+Nov 24: cleaned up code

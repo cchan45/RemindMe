@@ -13,8 +13,11 @@ module.exports = {
     },
     // checks if the user is an admin
     ensureAdmin: (req, res, next) => {
-        return req.user.admin
-            ? next()
-            : res.redirect('/reminders');
+        let user = req.user
+            .then((result) => {
+                return result.admin
+                    ? next()
+                    : res.redirect('/reminders');
+            })
     }
 };

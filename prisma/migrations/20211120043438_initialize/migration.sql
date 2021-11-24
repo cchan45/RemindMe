@@ -20,6 +20,3 @@ CREATE TABLE "Reminder" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
-
-UPDATE sqlite_sequence SET seq=1 WHERE name="User";
-UPDATE sqlite_sequence SET seq=1 WHERE name="Reminder";

@@ -32,7 +32,7 @@ router.get('/github/callback',
     passport.authenticate('github', {failureRedirect: '/auth/login'}),
     function (req, res) {
         // Successful authentication, redirect to dashboard.
-        res.render('dashboard', {user: req.user});
+        res.redirect('/dashboard')
     }
 );
 

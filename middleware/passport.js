@@ -11,7 +11,8 @@ const localLogin = new LocalStrategy(
         passwordField: 'password',
     },
     (email, password, done) => {
-        const user = userController.getUserByEmailIdAndPassword(email, password);
+        const user = userController.getUserByEmailIdAndPassword(email, password)
+        // console.log(user)
         return user
             // 'done' function calls serializeUser to create a session
             ? done(null, user)
@@ -24,20 +25,23 @@ const localLogin = new LocalStrategy(
 const githubLogin = new GitHubStrategy({
         clientID: process.env.GITHUB_CLIENT_ID,
         clientSecret: process.env.GITHUB_CLIENT_SECRET,
-        callbackURL: process.env.GITHUB_HOST
+        callbackURL: process.env.GITHUB_HOST,
+        scope: ['user:email'],
     },
-    (accessToken, refreshToken, user, done) => {
-        if (userController.checkUserById(parseInt(user.id))) {
-            return done(null, user);
-        } else {
-            authController.githubRegister(user);
-            return done(null, user);
-        }
+    async (accessToken, refreshToken, user, done) => {
+    const checkUser = await userController.checkUserById(parseInt(user.id))
+            if (checkUser) {
+                return done(null, checkUser);
+            } else {
+                const makeUser = authController.githubRegister(user);
+                return done(null, makeUser);
+            }
     });
 
 //creates a session if user is in database (only if user is logged in)
-passport.serializeUser(function (user, done) {
-    done(null, parseInt(user.id)); // stores the userID inside the session
+passport.serializeUser(async function (user, done) {
+    const getUser = await user
+    done(null, parseInt(getUser.id)); // stores the userID inside the session
 });  //changed ^ to parseInt for github
 
 passport.deserializeUser(function (id, done) {

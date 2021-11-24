@@ -1,17 +1,24 @@
-//Database Stuff
+//Prisma ORM
 const {PrismaClient} = require("@prisma/client");
 const prisma = new PrismaClient();
 
+//Express Server
 const express = require('express');
 const path = require('path');
 const ejsLayouts = require('express-ejs-layouts');
 const session = require('express-session');
+
+//routes and middleware
 const passport = require('./middleware/passport');
 const indexRoute = require('./routes/indexRoute');
 const authRoute = require('./routes/authRoute');
 const passUser = require('./middleware/passUser');
+
+//Uploading photos
 const imgur = require('imgur');
 const multer = require('multer');
+
+//for files (only ued to delete photo after getting the URL)
 const fs = require('fs');
 
 const storage = multer.diskStorage({
@@ -69,7 +76,10 @@ app.post('/uploads/', async (req, res) => {
     try {
         const url = await imgur.uploadFile(`./uploads/${file.filename}`);
         fs.unlinkSync(`./uploads/${file.filename}`);
-        res.locals.user.profile_picture = url.link;
+        const updatePic = await prisma.user.update({
+            where: {id: res.locals.user.id},
+            data: {profile_picture: url.link},
+        })
         // this line is needed so the page reloads
         res.json();
     } catch (error) {
