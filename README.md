@@ -12,7 +12,7 @@ This application allows you to add reminders for your everyday tasks. This appli
   -Upload your own profile picture
   -Destroy sessions for another users (only admin can do this)
   
-This application uses SQlite as it's database to store user's reminders. It also uses Prisma as it's ORM to communicate to the database.
+This application uses SQLite as it's database to store user's reminders. It also uses Prisma as it's ORM to communicate to the database.
   
 To run the program:
 
