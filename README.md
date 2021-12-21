@@ -5,4 +5,4 @@
 To run the program:
 
 1. type 'npm init' in terminal
-2. type 'npm install express'
+2. type 'npm i'
